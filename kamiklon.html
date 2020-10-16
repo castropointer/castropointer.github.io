@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            :root {
+            --size:calc(min(80vw, 80vh));
+            }
+
+            html,body{
+                border-collapse: collapse;
+                margin: 0px;
+                padding: 0px;
+                border: 0px;
+                font-family: monospace;
+                letter-spacing: 3px;
+                background-color: rgb(50, 50, 50);
+                color: rgb(240,240,240);
+            }
+
+            .dark{
+                background-color: rgb(60,60,60);
+            }
+            .blue{
+                background-color: rgb(60,60,240);
+            }
+            .green{
+                background-color: rgb(60,240,60);
+            }
+            .cyan{
+                background-color: rgb(60,240,240);
+            }
+            .red{
+                background-color: rgb(240,60,60);
+            }
+            .pink{
+                background-color: rgb(240,60,240);
+            }
+            .gold{
+                background-color: rgb(240,240,60);
+            }
+
+            #cSelect{
+                border: 2px solid white;
+                width: 10vh;
+                height: 10vh;
+                margin: 1vh;
+                margin-left: calc((100vw - 12vh) / 2);
+                border-radius: 10vh;
+                opacity: .8;
+            }
+
+            #cSelect:hover{
+                opacity: 1;
+            }
+
+            #board{
+                /*margin-top: 2vh;*/
+                margin-left: calc((100vw - var(--size)) / 2);
+                width: var(--size);
+                height: var(--size);
+                transition: .25s ease-out;
+                background-color: transparent;
+            }
+            #board td{
+                cursor:default;
+                width: auto;
+                height: auto;
+                text-align: center;
+                border: 2px solid transparent;
+                border-radius: calc(var(--size) * .003);
+                transition: .1s;
+            }
+
+            #board td:hover{
+                opacity: 1;
+                border-color: whitesmoke;
+            }
+
+            #cSelect:hover{
+                opacity: 1;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="cSelect" class="dark" onclicK="pick();">
+        </div>
+        <table id="board">
+        </table>
+    </body>
+    <script>
+        var size=20;
+        var cellColor=0;
+        var targetColor=0;
+        var tMode = false; //true=TOUCH, false=PICK
+
+        var g=[];
+        var colors=['dark','blue','green','cyan','red','pink','gold'];
+        function setCell(x, y, v){
+            g[x][y]=v;
+            document.getElementById(x+"-"+y).className=colors[v];
+        }
+        function drawGrid(size){
+            var r;
+            var c;
+            for(var a=0; a<size; a++){
+                g[a]=[];
+                r=document.createElement("tr");
+                r.id=a;
+                document.getElementById('board').appendChild(r);
+                document.createElement("tr");
+                for(var b=0; b<size; b++){
+                    g[a][b]=0;
+                    c=document.createElement("td");
+                    c.id=a+"-"+b;
+                    c.className=colors[g[a][b]];
+                    c.setAttribute("onclick","touch(" + a + "," + b +");")
+                    r.appendChild(c);
+                }
+            }
+        }
+
+        var rnd=(x)=>Math.floor(Math.random()*x);
+
+        var seed=function(sections,colors){
+            for(var a=0; a<sections;a++){
+                var x=rnd(size);
+                var y=rnd(size);
+                fill(x,y,g[x][y],rnd(colors)+1);
+            }
+        }
+
+        var pick=function(){
+            tMode=false;
+            document.getElementById('cSelect').className="dark";
+        }
+
+        var touch=function(x,y){
+            if(tMode){
+                cellColor=g[x][y]
+                fill(x,y,g[x][y], targetColor)
+                pick();
+            }
+            else{
+                targetColor=g[x][y]
+                document.getElementById('cSelect').className=colors[targetColor];
+                tMode=true;
+            }
+        }
+
+        var fill=function(x,y,n1,n2){
+            if(x>=0 && x<g.length && y>=0 && y<g[0].length && g[x][y]==n1 && n1!=n2){
+                setCell(x,y,n2);
+                setTimeout(() => {fill(x-1,y,n1,n2);}, 30);
+                setTimeout(() => {fill(x,y-1,n1,n2);}, 30);
+                setTimeout(() => {fill(x+1,y,n1,n2);}, 30);
+                setTimeout(() => {fill(x,y+1,n1,n2);}, 30);
+            }
+
+        }
+
+
+
+        window.onload=()=>{
+            drawGrid(size);
+            seed(20,6);
+        }
+    </script>
+</html>
