@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            :root {
+            --size:calc(min(70vw, 70vh));
+            }
+
+            html,body{
+                font-family:sans-serif;
+                border-collapse: collapse;
+                margin: 0px;
+                padding: 0px;
+                border: 0px;
+                letter-spacing: 0px;
+                color: rgb(50, 50, 50);
+                background-color: whitesmoke;
+                width: 100vw;
+                height: 100vh;
+            }
+            html{overflow-y: hidden;}
+
+            pageTitle{
+                box-shadow: 0px 10px 50vh gray;
+                border-bottom: 1px solid black;
+                padding-top: 2vh;
+                font-size: 5vh;
+                line-height: 7vh;
+                display: block;
+                text-align: center;
+                width: 100vw;
+                margin-bottom: 6vh;
+            }       
+
+            level{
+                border-radius: 5px;
+                width: 25vw;
+                padding-top: 6vh;
+                padding-bottom: 6vh;
+                font-size: 4vh;
+                font-weight: 300;
+                display: inline-block;
+                text-align: center;
+                transition: .2s;
+            }
+
+            level:hover{
+                font-weight:500;
+                color:white;
+            }
+            
+            .locked{
+                opacity: .4;
+            }
+            .locked:hover{
+                background-color: rgb(82, 82, 82);
+            }
+
+            .l1:hover{
+                background-color: rgb(211, 83, 79);
+            }
+            .l2:hover{
+                background-color: rgb(235, 153, 30);
+            }
+            .l3:hover{
+                background-color: rgb(250, 218, 74);
+            }
+            .l4:hover{
+                background-color: rgb(107, 175, 44);
+            }
+            .l5:hover{
+                background-color: rgb(54, 110, 173);
+            }
+            .l6:hover{
+                background-color: rgb(157, 72, 197);
+            }
+            .l7:hover{
+                background-color: rgb(211, 73, 181);
+            }
+
+            .tut:hover{
+                background-color: rgb(0, 88, 88);
+            }
+            detail{
+                display: block;
+                text-align: center;
+                font-size: 2.4vh;
+                font-style: italic;
+            }
+            
+            a{
+            cursor:pointer;
+            text-decoration: none !important;
+            color:inherit;
+            }
+            .row{
+                padding-bottom: 2vh;
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+    <body> 
+        <pageTitle>ChakraMaze</pageTitle>
+        <div class="row" style="padding-left:37.5vw">
+            <a><level class="tut">Tutorial</level></a>
+        </div>
+        <div class="row">
+            <a href="sec/game.html?0"><level class="l1">Level 1<detail>Muladhara</detail></level></a
+            ><a href="sec/game.html?1"><level class="l2">Level 2<detail>Svadisthana</detail></level></a
+            ><a href="sec/game.html?2"><level class="l3">Level 3<detail>Manipura</detail></level></a
+            ><a href="sec/game.html?3"><level class="l4">Level 4<detail>Anahata</detail></level></a>
+        </div>    
+        <div class="row" style="padding-left:25vw">
+            <a href="sec/game.html?4"><level class="l5">Level 5<detail>Vishudha</detail></level></a
+            ><a href="sec/game.html?5"><level class="l6">Level 6<detail>Ajna</detail></level></a>
+        </div>
+        <div class="row" style="padding-left:37.5vw">
+            <a href="sec/game.html?6"><level class="l7">Level 7<detail>Sahasrara</detail></level></a>
+        </div>
+                
+    </body>
+    <script>
+        
+    </script>
+</html>
