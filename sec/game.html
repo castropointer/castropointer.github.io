@@ -58,8 +58,12 @@
                 background-image: url("chakras/violet.png")!important;
             }
             .pink{
-                box-shadow: 0px 0px var(--size) 5px fuchsia;
+                box-shadow: 0px 0px var(--size) 5px rgb(218, 36, 178);
                 background-image: url("chakras/pink.png")!important;
+            }
+            .tut{
+                box-shadow: 0px 0px var(--size) 5px white(218, 36, 178);
+                background-image: url("chakras/bulb.png")!important;
             }
 
             #board{
@@ -68,8 +72,8 @@
                 width: var(--size);
                 height: var(--size);
                 transition: .25s ease-out;
-                background-color: whitesmoke;
-                border: 2px solid black;
+                background-color: #303030;
+                border: 2px solid whitesmoke;
                 border-collapse:collapse;   
                 background-image: none !important;
             }
@@ -79,8 +83,8 @@
                 width: auto;
                 height: auto;
                 text-align: center;
-                border: 2px solid black;
-                background-color:whitesmoke;
+                border: 2px solid whitesmoke;
+                background-color:#303030;
                 cursor: none;
                 box-shadow: none;
             }
@@ -102,7 +106,7 @@
                 border-radius: 100%;
             }
             .player{
-                background-image: url("fig2.png")!important;
+                background-image: url("fig1.png")!important;
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
@@ -138,32 +142,36 @@
         nodeRed.onclose=()=>{console.log('bye bye socket')};
         nodeRed.onopen=()=>{console.log('herro wolrd')};
         nodeRed.onmessage=e=>{
-            var d=JSON.parse(e.data).payload;
-            console.log('nodeRed: ' + d);
-            if(d=='up') moveUp();
-            else if(d=='right') moveRight();
-            else if(d=='down') moveDown();
-            else if(d=='left') moveLeft();
-            else console.log('invalid command "' + d + '"');
+            var d=JSON.parse(e.data);
+            console.log('nodeRed: ' + d.name);
+            if(d.name=='up') moveUp();
+            else if(d.name=='right') moveRight();
+            else if(d.name=='down') moveDown();
+            else if(d.name=='left') moveLeft();
+            else console.log('invalid command "' + d.name + '"');
         }
         var mazeCodes=[ '10,29,0,5,4,32,6,41,12,13,32,33,33,19,41,38,18,15,38,24,16,37,38,37,40,47,47,43,41,48,43,29,43,42,42,14,23,22,1,8,10,7',
                         '37,10,42,21,21,24,24,38,31,29,29,43,43,47,38,37,46,32,32,33,47,40,40,41,48,20,20,16,32,25,25,26,19,5,5,2,5,6,6,13,2,9,9,8,16,14,14,0,0,1,12,10',
                         '17,45,0,6,0,21,7,9,9,23,23,22,22,15,6,27,13,11,11,25,25,26,26,19,3,17,24,31,29,33,30,23,32,25,29,36,36,35,35,28,33,40,40,41,41,34,37,44,44,42,39,46,46,48,38,45,37,39,47,40,36,43',
-                        '7,6,0,35,1,4,8,15,14,15,2,9,9,12,5,19,5,6,21,23,23,16,16,18,18,25,25,27,27,6,17,45,28,30,30,37,37,36,36,43,43,42,44,48,48,34,34,32,32,39,39,40',
+                        '0,6,0,35,1,4,8,15,14,15,2,9,9,12,5,19,5,6,21,23,23,16,16,18,18,25,25,27,27,6,17,45,28,30,30,37,37,36,36,43,43,42,44,48,48,34,34,32,32,39,39,40',
+                        '35,27,35,36,22,43,22,26,23,2,24,45,25,11,26,19,19,20,20,27',
                         '0,24',
                         '0,24',
-                        '0,24'
+                        '24,19,24,25,25,18,18,19'
                     ]
-        var colors=['red','orange','gold','green','blue','violet','pink'];
+        var colors=['red','orange','gold','green','blue','violet','pink','tut'];
         var player=-1;
         var target=-2;
         var size=7;
         var g=[];
         var music, effect;
         var arg;
+        var direction=0;
+        var interval;
 
         function drawGrid(size){
             arg=window.location.search.toString()[1]-0;
+            if(arg==7) alert("Thank you for playing ChakraMaze!\nThe object of the game is quite simple: move the meditating figure through a maze to reach enlightenment ;)\nYou can control the game by using either the arrow keys on your keyboard, or the mental commands on your EMOTIV Epoc headset.\n Go ahead, give it a try!");
             document.getElementById('board').innerHTML='';
             document.getElementById('board').classList.add(colors[arg]);
             var r;
@@ -202,6 +210,10 @@
             drawGrid(size);
             load();
         }
+        const move=()=>{
+            if(direction) ([moveLeft, moveUp, moveRight, moveDown][direction-1])();
+            direction=0;
+        }
 
         var load=()=>{
             l=mazeCodes[arg].split(',');
@@ -216,22 +228,18 @@
             effect=document.getElementById("effect");
             effect.volume=.8;
             music.play();
-
+            interval=setInterval(move,1000);
         }
          window.onkeydown=(event)=>{
-            	if(event.keyCode==37) moveLeft();
-                else if(event.keyCode==38) moveUp();
-                else if(event.keyCode==39) moveRight();
-                else if(event.keyCode==40) moveDown();
+             if((event.keyCode>36) && (event.keyCode<41)) ([moveLeft, moveUp, moveRight, moveDown][event.keyCode-37])();
          }
 
         var checkWin=()=>{
             if(player==target){
-                effect.play();
-                alert('hurraaaa!\ndu hast gewonnen :)');   
-                music.load();
-                effect.load();
-                window.onload();
+                effect.play();   
+                alert('Yaaaay!\nyou completed ' + ((arg-7)?('level ' + (arg-0+1)):('the tutorial')) + ' :)');
+                clearInterval(interval);
+                window.open('../start.html', '_top');
             }
         }
 
