@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <script>
+        window.addEventListener('message', (event) => {
+        document.onload = () => { };
+        for (var i = 0; i < event.data.length; i++)
+            eps.push(ep);
+    })
+    </script>
     <style>
-        html, body{
+        html,
+        body {
             font-family: monospace;
             width: 100vw;
             height: 100vh;
@@ -15,11 +24,12 @@
             overflow-x: hidden;
             background-color: #f0f0f0;
         }
-        head-bar{
+
+        head-bar {
             z-index: 1;
             position: fixed;
             display: block;
-            top:0px;
+            top: 0px;
             padding: 2px;
             padding-top: 2em;
             width: 100vw;
@@ -27,27 +37,30 @@
             background-color: rgb(32, 32, 32);
             box-shadow: 0px 10px 10px 5px #f0f0f0;
         }
-        #topPlayer{
+
+        #topPlayer {
             width: 90vw;
             margin-left: 5vw;
-            height:100%;
+            height: 100%;
         }
-        episode{
-            display:block;
+
+        episode {
+            display: block;
             width: 90vw;
             margin-left: 5vw;
-            margin-top:.5em;
+            margin-top: .5em;
             background-color: #fff;
             color: rgb(32, 32, 32);
-            border:1px solid gray;
+            border: 1px solid gray;
             border-radius: 3px;
             padding: 10px;
             font-size: 1.2em;
         }
-        p-title{
+
+        p-title {
             position: fixed;
             width: 100vw;
-            top:2px;
+            top: 2px;
             font-size: 1.4em;
             color: white;
             text-align: center;
@@ -55,37 +68,34 @@
     </style>
     <title>podCatch</title>
 </head>
+
 <body>
     <head-bar>
         <p-title id="playerTitle">...</p-title>
         <audio id="topPlayer" controls>
-            <source id="secretSauce" src="" >
-            </audio> 
+            <source id="secretSauce" src="">
+        </audio>
     </head-bar>
 </body>
 <script>
-    var Episode=(t,d,s)=>{return {"title":t,"date":d,"source":s}}
-    var eps=[];
-    var addEpisode=ep=>{
-        var e=document.createElement('episode');
-        e.innerText=ep.title;
-        e.setAttribute('onclick','klik('+eps.length+')');
-        eps.push(ep);
-        document.body.appendChild(e);
-    }
-    window.addEventListener('message',(event)=>{
-        document.onload=()=>{};
-        for(var i=0;i<event.data.length;i++)
-            addEpisode(event.data[i]);
-    })
-
-    var klik=(index)=>{
-        document.getElementById('topPlayer').src=eps[index].source;
-        document.getElementById('playerTitle').innerText=eps[index].title;
+    var Episode = (t, d, s) => { return { "title": t, "date": d, "source": s } }
+    var eps = [];
+    var listEpisodes = () => {
+        for (var i = 0; i < eps.length; i++) {
+            var e = document.createElement('episode');
+            e.innerText = ep.title;
+            e.setAttribute('onclick', 'klik(' + i + ')');
+            document.body.appendChild(e);
+        }
     }
 
-    document.body.onload=()=>{
-        window.opener.postMessage('ready','*');
+    var klik = (index) => {
+        document.getElementById('topPlayer').src = eps[index].source;
+        document.getElementById('playerTitle').innerText = eps[index].title;
+    }
+
+    document.body.onload = () => {
+        listEpisodes(eps[i]);
     }
 </script>
 </html>
