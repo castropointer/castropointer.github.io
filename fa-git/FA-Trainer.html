@@ -15,8 +15,8 @@
             scroll-behavior: smooth;
             overflow: hidden;
             word-wrap: break-word;
-            background: rgb(71, 70, 145);
-            color: #111;
+            background: rgb(48, 65, 88);
+            color: #111; 
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
@@ -166,7 +166,7 @@
 <body>
     <div class="slide">
         <div class="content">
-            <img onclick="next()" id="test" src=""><br />
+            <img class="show" onclick="next()" id="test" src=""><br />
             <div id="iWrapper" class="hide">
                 <element class="btn" onclick="repeat()">&#x21bb;</element>
                 <input id="ip" class="playing" type="text">
@@ -183,8 +183,17 @@
         'nähe',
         'gebärde',
         'sprache',
-        'gebärdensprache',
-        'bestandteil',
+        'teil',
+        'hand',
+        'arm',
+        'bein',
+        'fuss',
+        'nase',
+        'mund',
+        'schokolade',
+        'hund',
+        'katze',
+        'pferd',
         'idee',
         'automatisch',
         'fahrrad',
@@ -192,7 +201,6 @@
         'studieren',
         'kino',
         'film',
-        'kinofilm',
         'aufräumen',
         'nudeln',
         'aber',
@@ -319,6 +327,7 @@
             } else {
                 get('ip').className = 'wrong';
                 setTimeout(() => {
+                    interval *= 1.2;
                     repeat();
                 }, 1000)
             }
