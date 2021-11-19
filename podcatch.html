@@ -16,6 +16,7 @@
             background-color: #f0f0f0;
         }
         head-bar{
+            z-index: 1;
             position: fixed;
             display: block;
             top:0px;
@@ -32,6 +33,7 @@
             height:100%;
         }
         episode{
+            z-index: 0;
             display:block;
             width: 90vw;
             margin-left: 5vw;
@@ -55,13 +57,10 @@
     <title>podCatch</title>
 </head>
 <body>
-    <episode>
-        Tesla Welt - 197 - Elon verkauft 10% seiner Tesla Aktien, Verrückte Farben in Shanghai gesichtet, Tesla Model 3 und Model Y werden erneut teurer und mehr
-    </episode>
     <head-bar>
         <p-title id="playerTitle">...</p-title>
         <audio id="topPlayer" controls>
-            <source id="secretSauce" src="https://d3ctxlq1ktw2nl.cloudfront.net/staging/2021-10-30/709a186a80be7e15863db5c09c164ee0.m4a" >
+            <source id="secretSauce" src="" >
             </audio> 
     </head-bar>
 </body>
