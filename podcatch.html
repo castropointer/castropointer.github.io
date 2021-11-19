@@ -33,7 +33,6 @@
             height:100%;
         }
         episode{
-            z-index: 0;
             display:block;
             width: 90vw;
             margin-left: 5vw;
@@ -57,14 +56,18 @@
     <title>podCatch</title>
 </head>
 <body>
+    <episode>
+        Tesla Welt - 197 - Elon verkauft 10% seiner Tesla Aktien, Verrückte Farben in Shanghai gesichtet, Tesla Model 3 und Model Y werden erneut teurer und mehr
+    </episode>
     <head-bar>
         <p-title id="playerTitle">...</p-title>
         <audio id="topPlayer" controls>
-            <source id="secretSauce" src="" >
+            <source id="secretSauce" src="https://d3ctxlq1ktw2nl.cloudfront.net/staging/2021-10-30/709a186a80be7e15863db5c09c164ee0.m4a" >
             </audio> 
     </head-bar>
 </body>
 <script>
+    var Episode=(t,d,s)=>{return {"title":t,"date":d,"source":s}}
     var eps=[];
     var addEpisode=ep=>{
         var e=document.createElement('episode');
@@ -76,6 +79,7 @@
     window.addEventListener('message',(event)=>{
         for(var i=0;i<event.data.length;i++)
             addEpisode(event.data[i]);
+        alert('alerta! alerta!');
     })
 
     var klik=(index)=>{
@@ -83,9 +87,8 @@
         document.getElementById('playerTitle').innerText=eps[index].title;
     }
 
-    /*
-        <ep-action>&#9650;</ep-action>
-        <ep-action>&#187;</ep-action>   
-    */
+    document.body.onload=()=>{
+        window.opener.postMessage('ready','*');
+    }
 </script>
 </html>
