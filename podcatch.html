@@ -7,7 +7,7 @@
         window.addEventListener('message', (event) => {
         document.onload = () => { };
         for (var i = 0; i < event.data.length; i++)
-            eps.push(ep);
+            eps.push(event.data[i]);
     })
     </script>
     <style>
@@ -83,7 +83,7 @@
     var listEpisodes = () => {
         for (var i = 0; i < eps.length; i++) {
             var e = document.createElement('episode');
-            e.innerText = ep.title;
+            e.innerText = eps[i].title;
             e.setAttribute('onclick', 'klik(' + i + ')');
             document.body.appendChild(e);
         }
