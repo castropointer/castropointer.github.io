@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        html, body{
+            font-family: monospace;
+            width: 100vw;
+            height: 100vh;
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+            border-collapse: collapse;
+            padding-top: 5vh;
+            overflow-x: hidden;
+            background-color: #f0f0f0;
+        }
+        head-bar{
+            position: fixed;
+            display: block;
+            top:0px;
+            padding: 2px;
+            padding-top: 2em;
+            width: 100vw;
+            height: auto;
+            background-color: rgb(32, 32, 32);
+            box-shadow: 0px 10px 10px 5px #f0f0f0;
+        }
+        #topPlayer{
+            width: 90vw;
+            margin-left: 5vw;
+            height:100%;
+        }
+        episode{
+            display:block;
+            width: 90vw;
+            margin-left: 5vw;
+            margin-top:.5em;
+            background-color: #fff;
+            color: rgb(32, 32, 32);
+            border:1px solid gray;
+            border-radius: 3px;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+        p-title{
+            position: fixed;
+            width: 100vw;
+            top:2px;
+            font-size: 1.4em;
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <title>podCatch</title>
+</head>
+<body>
+    <episode>
+        Tesla Welt - 197 - Elon verkauft 10% seiner Tesla Aktien, Verrückte Farben in Shanghai gesichtet, Tesla Model 3 und Model Y werden erneut teurer und mehr
+    </episode>
+    <head-bar>
+        <p-title id="playerTitle">...</p-title>
+        <audio id="topPlayer" controls>
+            <source id="secretSauce" src="https://d3ctxlq1ktw2nl.cloudfront.net/staging/2021-10-30/709a186a80be7e15863db5c09c164ee0.m4a" >
+            </audio> 
+    </head-bar>
+</body>
+<script>
+    var Episode=(t,d,s)=>{return {"title":t,"date":d,"source":s}}
+    var eps=[];
+    var addEpisode=ep=>{
+        var e=document.createElement('episode');
+        e.innerText=ep.title;
+        e.setAttribute('onclick','klik('+eps.length+')');
+        eps.push(ep);
+        document.body.appendChild(e);
+    }
+    window.addEventListener('message',(event)=>{
+        for(var i=0;i<event.data.length;i++)
+            addEpisode(event.data[i]);
+    })
+
+    var klik=(index)=>{
+        document.getElementById('topPlayer').src=eps[index].source;
+        document.getElementById('playerTitle').innerText=eps[index].title;
+    }
+
+    /*
+        <ep-action>&#9650;</ep-action>
+        <ep-action>&#187;</ep-action>   
+    */
+</script>
+</html>
