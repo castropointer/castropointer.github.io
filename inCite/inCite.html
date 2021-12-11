@@ -57,18 +57,6 @@
     
 </body>
 <script>
-    var arg=document.location.search.substr(1)
-    var q=JSON.parse((localStorage.getItem("quotes")))||[];
-    if(arg){
-        var a=JSON.parse(atob(arg));
-        q.push(a);
-        localStorage.setItem("quotes", JSON.stringify(q));
-    }
-
-    for(var i=0; i<q.length;i++){
-        addItem(q[i])
-    }
-
     var addItem=i=>{
         o=document.createElement('item');//outer item
         t=document.createElement('item_title');
@@ -88,6 +76,18 @@
         o.appendChild(d);
 
         document.body.appendChild(o);
+    }
+
+    var arg=document.location.search.substr(1)
+    var q=JSON.parse((localStorage.getItem("quotes")))||[];
+    if(arg){
+        var a=JSON.parse(atob(arg));
+        q.push(a);
+        localStorage.setItem("quotes", JSON.stringify(q));
+    }
+
+    for(var i=0; i<q.length;i++){
+        addItem(q[i])
     }
     /*  'eyJuYW1lIjoiam9uYXMiLCJhZ2UiOjIyfQ=='  jonas,22
         'eyJuYW1lIjoicm9zYSIsImFnZSI6NDl9'      rosa, 49
