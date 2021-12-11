@@ -40,14 +40,17 @@
             margin-bottom: 10px;
             box-shadow: 0px 1px #555;
         }
+        item_content{
+            margin-left: 30px;
+            background-color: #8686868e;
+            font-style: italic;
+        }
         item_link{
             font-size:.9em;
-            font-style: italic;
             opacity: .7;
         }
         item_date{
             font-size:.9em;
-            font-style: italic;
             opacity: .7;
         }
         item_date::before{
@@ -63,19 +66,23 @@
     var addItem=i=>{
         i.date=Date(i.date).toLocaleString().split('GMT')[0];
         o=document.createElement('item');//outer item
+        c=document.createElement('item_content');
         t=document.createElement('item_title');
         l=document.createElement('item_link');
         d=document.createElement('item_date');
 
         t.classList.add('block');
+        c.classList.add('block');
         l.classList.add('block');
         d.classList.add('block');
 
-        t.innerText=i.title;
+        t.innerText=i.title
+        c.innerText=i.content;
         l.innerText=i.link;
         d.innerText=i.date;
 
         o.appendChild(t);
+        o.appendChild(c);
         o.appendChild(l);
         o.appendChild(d);
 
