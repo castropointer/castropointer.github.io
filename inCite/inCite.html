@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        @font-face {
+            font-family: stdFont;
+            src: url(fonts/Montserrat/Montserrat-Regular.ttf);
+        }
+
+        html body{
+            font-family: stdFont;
+            font-size: 16px;
+            width:100vw;
+            height: 100vh;
+            overflow-x:hidden;
+            margin:0px;
+            padding:0px;
+            border: 0px;
+            border-collapse: collapse;
+            background-color: #eee;
+        }
+        .block{display:block;}
+        item{
+            display: inline-block;
+            padding: .5vh;
+            margin-left:12px;
+            margin-top:12px;
+            color: #333;
+            box-shadow: 0px 1px 6px #4d4d4d;
+            border-radius: 5px;
+            max-width: 96vw;
+        }
+        item:hover{
+            box-shadow: 0px 1px 10px #4d4d4d;
+        }
+        item_title{
+            font-size:1em;
+            font-weight: bold;
+            opacity: 1;
+            margin-bottom: 10px;
+            box-shadow: 0px 1px #555;
+        }
+        item_link{
+            font-size:.9em;
+            font-style: italic;
+            opacity: .7;
+        }
+        item_date{
+            font-size:.9em;
+            font-style: italic;
+            opacity: .7;
+        }
+    </style>
+    <title>Links & Quotes</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arg=document.location.search.substr(1)
+    var q=JSON.parse((localStorage.getItem("quotes")))||[];
+    if(arg){
+        var a=JSON.parse(atob(arg));
+        q.push(a);
+        localStorage.setItem("quotes", JSON.stringify(q));
+    }
+
+    for(var i=0; i<q.length;i++){
+        addItem(q[i])
+    }
+
+    var addItem=i=>{
+        o=document.createElement('item');//outer item
+        t=document.createElement('item_title');
+        l=document.createElement('item_link');
+        d=document.createElement('item_date');
+
+        t.classList.add('block');
+        l.classList.add('block');
+        d.classList.add('block');
+
+        t.innerText=i.title;
+        l.innerText=i.link;
+        d.innerText=i.date;
+
+        o.appendChild(t);
+        o.appendChild(l);
+        o.appendChild(d);
+
+        document.body.appendChild(o);
+    }
+    /*  'eyJuYW1lIjoiam9uYXMiLCJhZ2UiOjIyfQ=='  jonas,22
+        'eyJuYW1lIjoicm9zYSIsImFnZSI6NDl9'      rosa, 49
+    */
+</script>
+</html>
