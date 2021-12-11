@@ -77,7 +77,7 @@
         d.classList.add('block');
 
         t.innerText=i.title
-        c.innerText=i.content;
+        c.innerText=decodeURI(i.content);
         l.innerText=i.link;
         d.innerText=i.date;
 
