@@ -61,7 +61,7 @@
 </body>
 <script>
     var addItem=i=>{
-        i.date=i.date=i.date.toLocaleString();
+        i.date=i.date=Date(i.date).toLocaleString();
         o=document.createElement('item');//outer item
         t=document.createElement('item_title');
         l=document.createElement('item_link');
@@ -93,5 +93,8 @@
     for(var i=0; i<q.length;i++){
         addItem(q[i])
     }
+    /*  'eyJuYW1lIjoiam9uYXMiLCJhZ2UiOjIyfQ=='  jonas,22
+        'eyJuYW1lIjoicm9zYSIsImFnZSI6NDl9'      rosa, 49
+    */
 </script>
 </html>
