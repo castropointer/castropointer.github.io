@@ -5,6 +5,25 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" style="width:60vw;position:absolute;left:10vw;">
+    <br><br><br>
+    <span style="margin-left:10vw;padding-top:10vh;">
+        <input id="url" type="text" style="width:60vw" placeholder="script URL">
+        <button style="width:10vw;" onclick="link()"> link </button>
+    </span>
+    <br><br>
+    <center>
+        <a id="bm" href="">
+                
+        </a>
+    </center>
 </body>
+<script>
+    var link=()=>{
+        var template="javascript:(function(){let s=document.getElementsByTagName('script')[0].cloneNode(true);s.src='#';document.body.appendChild(s);})();";
+        var v=document.getElementById('url').value.split("\\").join("/");
+        var b=document.getElementById('bm');
+        b.href=template.replace('#',v);
+        b.innerText=v.split("/")[v.split("/").length-1];
+    }
+</script>
 </html>
