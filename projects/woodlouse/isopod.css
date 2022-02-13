@@ -1,48 +1,86 @@
+:root{
+    --toggle:4em;
+    --menu: 10vw;
+    --player: 4em;
+    --content: calc(100vw - var(--menu));
+}
 
+[theme="dark"]{
+    --accent: #eee;
+    --primary: #222;
+}
 
-html{
-    font-size: 12pt;
+[theme="light"]{
+    --accent: #222;
+    --primary: #eee;
+}
+
+html,body{
+    background-color: var(--primary);
+    color: var(--accent);
+    width: 100vw;
+    height: 100vh;
+    font-size: 14pt;
     font-family: 'Rubik', 'sans-serif';
     cursor: default;
     padding: 0px;
     margin: 0px;
     border: 0px;
     border-collapse: collapse;
+    overflow-x: hidden;
 }
 
-menu-bar{
+content{
+    background-color: indigo;
+    position: absolute;
+    width: var(--content);
+    height: max-content;
+    left: var(--menu);
+}
+
+navbar{
+    padding-top: 4em;
+    left:0px;
+    top:0px;
+    background-color: forestgreen;
+    position: fixed;
+    width: var(--menu);
+    height: 100vh;
+}
+
+player{
+    background-color: darkgoldenrod;
+    position: fixed;
+    left:0px;
+    bottom: 0px;
+    width: 100vw;
+    height: var(--player);
+}
+
+nav-toggle{
+    background-color: rosybrown;
     position: fixed;
     left: 0px;
     top: 0px;
-    height: 100vh;
-    width:10vw;
-    background-color: #060;
+    width: var(--toggle);
+    height:var(--toggle);
 }
 
 menu{
+    margin:0px;
     cursor: pointer;
     display: inline-table;
 }
 
+
 menu item{
-    display: block;
-    padding:3px;
+    display:block;
+    padding:10px;
     border-radius: 3px;
     background-color: transparent;
     transition: .2s;
 }
 
-pod-title{
-    display: block;
-    font-size: 1.5em;
-}
-
-pod-owner{
-    display: block;
-    opacity: .6;
-}
-
-pod-details{
-    margin: 10px;
-    display: block;
+menu item:hover{
+    background-color: #88888860;
 }

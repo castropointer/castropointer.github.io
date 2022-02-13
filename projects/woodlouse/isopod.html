@@ -5,33 +5,58 @@
     <link rel="stylesheet" type="text/css" href="isopod.css">
     <title>isoPod</title>
 </head>
-<body>
-    <pod-title id="title">Title</pod-title>
-    <pod-owner id="author">Author</pod-owner>
-    <pod-details id="desc"> some text about the cast</pod-details>
-    <img id="cover" src="" style="width:6cm">
+<body theme="dark">
+    <content location="feeds">
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        great content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+        content<br>
+       
+    </content>
+    <navbar>
+        menu item<br>
+        menu item<br>
+        menu item<br>
+        menu item<br>
+        menu item<br>
+        menu item<br>
+    </navbar>
+    <player>
+        playaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </player>
+    <nav-toggle>burgur</nav-toggle>
 </body>
-<script>
-    var showFeed=d=>{
-        let channel=d.getElementsByTagName('channel')[0];
-        let title=channel.getElementsByTagName('title')[0].innerHTML;
-        let author=channel.getElementsByTagName('itunes:author')[0].innerHTML;
-        let description=channel.getElementsByTagName('description')[0].innerHTML;
-        let image=channel.getElementsByTagName('image')[0].getElementsByTagName('url')[0].innerHTML;
-        document.getElementById('title').innerHTML=title;
-        document.getElementById('author').innerHTML=author;
-        document.getElementById('desc').innerHTML=description;
-        document.getElementById('cover').src=image;
-    }
-
-    //const RSS_URL = 'https://feeds.megaphone.fm/stuffyoushouldknow';
-    //const RSS_URL = 'https://anchor.fm/s/4d413e38/podcast/rss';
-    const RSS_URL = 'https://feeds.simplecast.com/54nAGcIl';
-
-        fetch(RSS_URL)
-        .then(response => response.text())
-        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-        .then(data => showFeed(data));
-    
-</script>
+<script src="isopod.js"></script>
 </html>
+
+<!--
+<pod>
+            <cover id="cover" style="width:6cm"></cover>
+            <pod-title id="title">Title</pod-title>
+            <pod-owner id="author">Author</pod-owner>
+            <!-+<pod-details class="hidden" id="desc">some text about the cast</pod-details>-->
+            <!-- burgurbur &#9776; +->
+        </pod>
+-->
