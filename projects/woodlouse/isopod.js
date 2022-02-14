@@ -17,6 +17,15 @@ var loadPod=(url)=>{
     .then(data => {showFeed(data)});
 }
 
+navStates={
+    'closed':'open',
+    'open':'closed'
+}
+
+var toggleNav=()=>{
+    document.getElementById('navbar').className=navStates[document.getElementById('navbar').className];
+}
+
 
 const sysk = 'https://feeds.megaphone.fm/stuffyoushouldknow';
 const fem = 'https://anchor.fm/s/4d413e38/podcast/rss';
