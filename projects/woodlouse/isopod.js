@@ -1,22 +1,32 @@
-var showFeed=d=>{
+var showPod=d=>{
     let channel=d.getElementsByTagName('channel')[0];
-    let title=channel.getElementsByTagName('title')[0].innerHTML;
-    let author=channel.getElementsByTagName('itunes:author')[0].innerHTML;
-    let description=channel.getElementsByTagName('description')[0].innerHTML;
-    let image=channel.getElementsByTagName('image')[0].getElementsByTagName('url')[0].innerHTML;
-    document.getElementById('title').innerText=title;
-    document.getElementById('author').innerText=author;
-    //document.getElementById('desc').innerText=description;
-    document.getElementById('cover').style.backgroundImage='url('+image+')';
+    let pod=document.createElement('pod');
+    let title=document.createElement('pod-title');
+    title.innerText=channel.getElementsByTagName('title')[0].innerHTML;
+    let author=document.createElement('pod-owner');
+    author.innerText=channel.getElementsByTagName('itunes:author')[0].innerHTML;
+    let image=document.createElement('cover');
+    image.style.backgroundImage='url('+channel.getElementsByTagName('image')[0].getElementsByTagName('url')[0].innerHTML+')';
+    pod.appendChild(image);
+    pod.appendChild(title);
+    pod.appendChild(author);
+    document.getElementById('content').appendChild(pod);
+    //let description=channel.getElementsByTagName('description')[0].innerHTML;
 }
 
-
+var loadSubs=()=>{
+    return {
+        sysk:'https://feeds.megaphone.fm/stuffyoushouldknow',
+        fem:'https://anchor.fm/s/4d413e38/podcast/rss',
+        daily:'https://feeds.simplecast.com/54nAGcIl'
+    };
+}
 
 var loadPod=(url)=>{
     fetch(url)
     .then(response => response.text())
     .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-    .then(data => {showFeed(data)});
+    .then(data => {showPod(data)});
 }
 
 navStates={
@@ -28,8 +38,6 @@ var toggleNav=()=>{
     document.getElementById('navbar').className=navStates[document.getElementById('navbar').className];
 }
 
-const sysk = 'https://feeds.megaphone.fm/stuffyoushouldknow';
-const fem = 'https://anchor.fm/s/4d413e38/podcast/rss';
-const daily = 'https://feeds.simplecast.com/54nAGcIl';
-
-loadPod(sysk);
+loadPod(loadSubs().daily);
+loadPod(loadSubs().fem);
+loadPod(loadSubs().sysk);

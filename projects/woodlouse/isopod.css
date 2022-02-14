@@ -9,11 +9,11 @@
 
 [theme="dark"]{
     --accent: #eee;
-    --primary: #222;
+    --primary: #333;
 }
 
 [theme="light"]{
-    --accent: #222;
+    --accent: #333;
     --primary: #eee;
 }
 
@@ -41,15 +41,36 @@ page{
     overflow: hidden;
     width:100vw;
     height: 100vh;
+    min-height: 100vh;
     background-color: transparent;
 }
 
+pod{
+display: inline-block;
+margin: .5em;
+}
+
+cover{
+    width: 12rem !important;
+    height: 12rem !important;
+    background-size: cover;
+    display: block;
+}
+
+pod-title{
+    display:block;
+}
+pod-owner{
+    display:block;
+}
+
 content{
-    background-color: forestgreen;
+    background-color: var(--primary);
     position: absolute;
     width: var(--contentToggle);
     left: 0px;
     padding: var(--toggle);
+    min-height: 100%;
     max-height: 100%;
     overflow: scroll;
     transition: 200ms;
@@ -59,7 +80,7 @@ navbar{
     padding-top: var(--toggle);
     left:0px;
     top:0px;
-    background-color: dodgerblue;
+    background-color: var(--primary);
     position: absolute;
     width: var(--menu);
     height: 100vh;
@@ -68,7 +89,7 @@ navbar{
 }
 
 player{
-    background-color: maroon;
+    background-color: var(--primary);
     position: absolute;
     left:0vw;
     right:0vw;
@@ -78,7 +99,7 @@ player{
 
 nav-toggle{
     font-size: 1.2em;
-    background-color: gold;
+    background-color: var(--primary);
     position: absolute;
     left: 0px;
     top: 0px;
