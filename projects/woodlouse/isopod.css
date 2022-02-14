@@ -45,7 +45,7 @@ page{
 }
 
 content{
-    background-color: rebeccapurple;
+    background-color: rosybrown;
     position: absolute;
     width: var(--contentToggle);
     left: 0px;
@@ -72,13 +72,13 @@ player{
     position: absolute;
     left:0vw;
     right:0vw;
-    bottom: 0vh;
+    top: calc(100vh - var(--player));
     height: var(--player);
 }
 
 nav-toggle{
     font-size: 1.2em;
-    background-color: coral;
+    background-color: maroon;
     position: absolute;
     left: 0px;
     top: 0px;
