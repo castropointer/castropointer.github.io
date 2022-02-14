@@ -26,8 +26,8 @@ html,body{
     font-size: 1rem;
     background-color: var(--primary);
     color: var(--accent);
-    width: 100vw;
-    height: 100vh;
+    width: 0vw;
+    height: 0vh;
     font-family: 'Rubik', 'sans-serif';
     cursor: default;
     padding: 0px;
@@ -45,7 +45,7 @@ page{
 }
 
 content{
-    background-color: rosybrown;
+    background-color: forestgreen;
     position: absolute;
     width: var(--contentToggle);
     left: 0px;
@@ -59,7 +59,7 @@ navbar{
     padding-top: var(--toggle);
     left:0px;
     top:0px;
-    background-color: mediumspringgreen;
+    background-color: dodgerblue;
     position: absolute;
     width: var(--menu);
     height: 100vh;
@@ -68,17 +68,17 @@ navbar{
 }
 
 player{
-    background-color: midnightblue;
+    background-color: maroon;
     position: absolute;
     left:0vw;
     right:0vw;
-    top: calc(100vh - var(--player));
+    bottom: 0vh;
     height: var(--player);
 }
 
 nav-toggle{
     font-size: 1.2em;
-    background-color: maroon;
+    background-color: gold;
     position: absolute;
     left: 0px;
     top: 0px;
