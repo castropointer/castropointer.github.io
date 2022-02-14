@@ -1,5 +1,5 @@
 :root{
-    --toggle:4rem;
+    --toggle:2rem;
     --menu: 12rem;
     --player: 4rem;
     --contentMenu: calc(100vw - var(--menu));
@@ -22,7 +22,6 @@
 }
 
 html,body{
-    text-size-adjust: none;
     font-weight: bolder;
     font-size: 1rem;
     background-color: var(--primary);
@@ -35,25 +34,33 @@ html,body{
     margin: 0px;
     border: 0px;
     border-collapse: collapse;
-    overflow-x: hidden;
+}
+
+page{
+    position:absolute;
+    overflow: hidden;
+    width:100vw;
+    height: 100vh;
+    background-color: transparent;
 }
 
 content{
-    background-color: var(--primary);
+    background-color: rebeccapurple;
     position: absolute;
     width: var(--contentToggle);
-    height: max-content;
-    left: var(--toggle);
-    padding: 1em;
-    padding-left: 2em;
+    left: 0px;
+    padding: var(--toggle);
+    max-height: 100%;
+    overflow: scroll;
+    transition: 200ms;
 }
 
 navbar{
     padding-top: var(--toggle);
     left:0px;
     top:0px;
-    background-color: var(--primary);
-    position: fixed;
+    background-color: mediumspringgreen;
+    position: absolute;
     width: var(--menu);
     height: 100vh;
     transition: 200ms;
@@ -62,17 +69,17 @@ navbar{
 
 player{
     background-color: midnightblue;
-    position: fixed;
-    left:0px;
-    bottom: 0px;
-    width: 100vw;
+    position: absolute;
+    left:0%;
+    right:0%;
+    bottom: 0%;
     height: var(--player);
 }
 
 nav-toggle{
-    font-size: 2em;
-    background-color: var(--primary);
-    position: fixed;
+    font-size: 1.2em;
+    background-color: coral;
+    position: absolute;
     left: 0px;
     top: 0px;
     width: var(--toggle);
