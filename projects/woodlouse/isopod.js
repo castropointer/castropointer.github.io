@@ -10,6 +10,8 @@ var showFeed=d=>{
     document.getElementById('cover').style.backgroundImage='url('+image+')';
 }
 
+
+
 var loadPod=(url)=>{
     fetch(url)
     .then(response => response.text())
@@ -24,10 +26,6 @@ navStates={
 
 var toggleNav=()=>{
     document.getElementById('navbar').className=navStates[document.getElementById('navbar').className];
-}
-
-var hithere=()=>{
-    alert("hello world");
 }
 
 const sysk = 'https://feeds.megaphone.fm/stuffyoushouldknow';

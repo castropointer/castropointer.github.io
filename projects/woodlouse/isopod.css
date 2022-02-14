@@ -1,8 +1,10 @@
 :root{
-    --toggle:4em;
-    --menu: 10vw;
-    --player: 4em;
-    --content: calc(100vw - var(--menu));
+    --toggle:4rem;
+    --menu: 12rem;
+    --player: 4rem;
+    --contentMenu: calc(100vw - var(--menu));
+    --contentToggle: calc(100vw - var(--toggle));
+    --shadow:#88888860;
 }
 
 [theme="dark"]{
@@ -20,6 +22,7 @@
 }
 
 html,body{
+    text-size-adjust: none;
     font-weight: bolder;
     font-size: 1rem;
     background-color: var(--primary);
@@ -36,26 +39,29 @@ html,body{
 }
 
 content{
-    background-color: indigo;
+    background-color: var(--primary);
     position: absolute;
-    width: var(--content);
+    width: var(--contentToggle);
     height: max-content;
-    left: max(var(--menu), var(--toggle));
+    left: var(--toggle);
+    padding: 1em;
+    padding-left: 2em;
 }
 
 navbar{
-    padding-top: calc(2 * var(--toggle));
+    padding-top: var(--toggle);
     left:0px;
     top:0px;
-    background-color: forestgreen;
+    background-color: var(--primary);
     position: fixed;
     width: var(--menu);
     height: 100vh;
     transition: 200ms;
+    box-shadow: 0px 0px .5rem 0px #00000050;
 }
 
 player{
-    background-color: darkgoldenrod;
+    background-color: midnightblue;
     position: fixed;
     left:0px;
     bottom: 0px;
@@ -64,18 +70,24 @@ player{
 }
 
 nav-toggle{
-    background-color: rosybrown;
+    font-size: 2em;
+    background-color: var(--primary);
     position: fixed;
     left: 0px;
     top: 0px;
     width: var(--toggle);
     height:var(--toggle);
+    line-height: var(--toggle);
+    text-align: center;
 }
 
 menu{
+    position: absolute;
+    left:0px;
     margin:0px;
     cursor: pointer;
     display: inline-table;
+    width: var(--menu);
 }
 
 menu item{
@@ -87,11 +99,11 @@ menu item{
 }
 
 menu item:hover{
-    background-color: #88888860;
+    background-color: var(--shadow);
 }
 
 .closed{
-    left: calc(-1 * var(--menu));
+    left: calc(-1 * var(--menu) - 1rem);
 }
  
 .open{
@@ -103,8 +115,13 @@ menu item:hover{
     nav-toggle{
         display: none;
     }
-
     navbar{
         left: 0px !important;
+        padding-top: calc(3 * var(--toggle));
+        box-shadow: 0px 0px .5em 0px #00000050;
+    }
+    content{
+        left: var(--menu);
+        width: var(--contentMenu);
     }
 }
