@@ -21,7 +21,7 @@
 }
 
 html,body{
-    font-size: calc(2 * var(--rootFont));
+    font-size: 16px;
     background-color: var(--primary);
     color: var(--accent);
     width: 100vw;
