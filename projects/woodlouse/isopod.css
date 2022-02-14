@@ -1,5 +1,6 @@
 :root{
     font-size: 6mm;
+    --rootFont: min(1vh, 1vw);
     --toggle:4em;
     --menu: 10vw;
     --player: 4em;
@@ -21,6 +22,7 @@
 }
 
 html,body{
+    font-size: calc(2 * svar(--rootFont));
     background-color: var(--primary);
     color: var(--accent);
     width: 100vw;
