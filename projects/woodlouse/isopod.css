@@ -1,5 +1,5 @@
 :root{
-    font-size: 14pt;
+    font-size: 6mm;
     --toggle:4em;
     --menu: 10vw;
     --player: 4em;
@@ -95,4 +95,15 @@ menu item:hover{
  
 .open{
     left: 0px;
+}
+
+
+@media screen and (min-width: 800px){
+    nav-toggle{
+        display: none;
+    }
+
+    navbar{
+        left: 0px !important;
+    }
 }
