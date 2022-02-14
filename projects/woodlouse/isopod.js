@@ -26,6 +26,9 @@ var toggleNav=()=>{
     document.getElementById('navbar').className=navStates[document.getElementById('navbar').className];
 }
 
+var hithere=()=>{
+    alert("hello world");
+}
 
 const sysk = 'https://feeds.megaphone.fm/stuffyoushouldknow';
 const fem = 'https://anchor.fm/s/4d413e38/podcast/rss';
