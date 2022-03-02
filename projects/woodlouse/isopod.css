@@ -5,6 +5,7 @@
     --contentMenu: calc(100vw - var(--menu));
     --contentToggle: calc(100vw - var(--toggle));
     --shadow:#88888860;
+    --pod: calc(var(--contentToggle) / 2.5);
 }
 
 [theme="dark"]{
@@ -47,22 +48,34 @@ page{
 
 pod{
 display: inline-block;
-margin: .5em;
+background-size: cover;
+border-radius: .5em;
+width: var(--menu);
+height: var(--menu);
+max-width: calc((var(--contentToggle) - 2rem) / 2);
+max-height: calc((var(--contentToggle) - 2rem) / 2);
+overflow: hidden;
+margin: .1em;
+box-shadow:0px 0px 10px #00000050;
 }
 
-cover{
-    width: 12rem !important;
-    height: 12rem !important;
-    background-size: cover;
-    display: block;
+.one-line{
+    white-space: nowrap;  
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 pod-title{
     display:block;
+    background-color: #000000d0;
+    margin-top: calc(50% - 1em);
 }
 pod-owner{
     display:block;
+    background-color: #000000d0;
 }
+
+
 
 content{
     background-color: var(--primary);
