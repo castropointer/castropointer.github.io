@@ -4,7 +4,19 @@
 <channel>
   <title>Paulo Coelho - The Alchemist</title>
   <link>https://www.w3schools.com</link>
-  <description>Free web building tutorials</description>
+  <description>
+  Combining magic, mysticism, wisdom and wonder into an inspiring tale of self-discovery, The Alchemist has become a modern classic,
+  selling millions of copies around the world and transforming the lives of countless readers across generations.
+
+  Paulo Coelho's masterpiece tells the mystical story of Santiago, an Andalusian shepherd boy who yearns to travel in search of a worldly treasure.
+  His quest will lead him to riches far different—and far more satisfying—than he ever imagined.
+  Santiago's journey teaches us about the essential wisdom of listening to our hearts, of recognizing opportunity and learning to read the omens strewn along
+  life's path, and, most importantly, to follow our dreams.
+  </description>
+  <image>
+    <url>https://goldenaudiobooks.com/wp-content/uploads/2020/09/516c6gUQLaL._SX329_BO1204203200.jpg</url>
+    <title>The Alchemist</title>
+    </image>
   <item>
     <title>Chapter 01</title>
     <link>https://www.w3schools.com/xml/xml_rss.asp</link>
@@ -12,6 +24,39 @@
     <enclosure url="https://ipaudio.club/wp-content/uploads/GOLN/Alchemist/01.mp3?_=1"
     length="3599977" type="audio/mpeg" />
   </item>
+  <item>
+    <title>Chapter 02</title>
+    <link>https://www.w3schools.com/xml/xml_rss.asp</link>
+    <description>1st Chapter</description>
+    <enclosure url="https://ipaudio.club/wp-content/uploads/GOLN/Alchemist/02.mp3?_=2"
+    length="3599951" type="audio/mpeg" />
+  </item>
+  <item>
+    <title>Chapter 03</title>
+    <link>https://www.w3schools.com/xml/xml_rss.asp</link>
+    <description>1st Chapter</description>
+    <enclosure url="https://ipaudio.club/wp-content/uploads/GOLN/Alchemist/03.mp3?_=3"
+    length="3599977" type="audio/mpeg" />
+  </item>
+  <item>
+    <title>Chapter 04</title>
+    <link>https://www.w3schools.com/xml/xml_rss.asp</link>
+    <description>1st Chapter</description>
+    <enclosure url="https://ipaudio.club/wp-content/uploads/GOLN/Alchemist/04.mp3?_=4"
+    length="3599951" type="audio/mpeg" />
+  </item>
+  <item>
+    <title>Chapter 05</title>
+    <link>https://www.w3schools.com/xml/xml_rss.asp</link>
+    <description>1st Chapter</description>
+    <enclosure url="https://ipaudio.club/wp-content/uploads/GOLN/Alchemist/05.mp3?_=5"
+    length="1111" type="audio/mpeg" />
+  </item>
 </channel>
 
 </rss> 
+
+<!-- 
+47907
+
+-->
